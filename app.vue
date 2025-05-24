@@ -35,7 +35,6 @@ const { status, data, refresh } = useFetch('/api/hello', {
     modelIndex,
     input
   },
-  lazy: true,
   watch: false,
   immediate: false
 })
