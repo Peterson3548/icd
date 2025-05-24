@@ -4,5 +4,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     githubToken: process.env.GITHUB_TOKEN
-  }
+  },
+  ssr: false
 })
