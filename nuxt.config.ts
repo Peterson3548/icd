@@ -4,7 +4,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   runtimeConfig: {
-    githubToken: process.env.GITHUB_TOKEN
+    githubToken: process.env.GITHUB_TOKEN,
+    HFToken: process.env.HF_TOKEN
   },
 
   modules: ['@nuxt/eslint'],
