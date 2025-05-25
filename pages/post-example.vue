@@ -1,29 +1,47 @@
 <template>
+  <div>
     <div>
-        <div>
-            <select v-model="modelIndex" :disabled="status === 'pending'">
-                <option :value="0">openai/gpt-4.1</option>
-                <option :value="1">openai/gpt-4.1-mini</option>
-                <option :value="2">openai/gpt-4.1-nano</option>
-            </select>
-        </div>
-
-        <div>
-            <textarea v-model="input" :disabled="status === 'pending'" style="width:300px;height:100px;"></textarea>
-        </div>
-
-        <div>
-            <button @click="refresh" :disabled="status === 'pending'">search</button>
-        </div>
-
-        <div v-if="status === 'pending'">
-            Loading ...
-        </div>
-
-        <div v-else>
-            {{ data }}
-        </div>
+      <select
+        v-model="modelIndex"
+        :disabled="status === 'pending'"
+      >
+        <option :value="0">
+          openai/gpt-4.1
+        </option>
+        <option :value="1">
+          openai/gpt-4.1-mini
+        </option>
+        <option :value="2">
+          openai/gpt-4.1-nano
+        </option>
+      </select>
     </div>
+
+    <div>
+      <textarea
+        v-model="input"
+        :disabled="status === 'pending'"
+        style="width:300px;height:100px;"
+      />
+    </div>
+
+    <div>
+      <button
+        :disabled="status === 'pending'"
+        @click="refresh"
+      >
+        search
+      </button>
+    </div>
+
+    <div v-if="status === 'pending'">
+      Loading ...
+    </div>
+
+    <div v-else>
+      {{ data }}
+    </div>
+  </div>
 </template>
 
 <script setup>

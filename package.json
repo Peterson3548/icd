@@ -10,11 +10,16 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^3.17.4",
-    "vue": "^3.5.14",
-    "vue-router": "^4.5.1",
     "@azure-rest/ai-inference": "latest",
     "@azure/core-auth": "latest",
-    "@azure/core-sse": "latest"
+    "@azure/core-sse": "latest",
+    "@nuxt/eslint": "^1.4.1",
+    "nuxt": "^3.17.4",
+    "vue": "^3.5.14",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.27.0",
+    "eslint-plugin-vue": "^10.1.0"
   }
 }

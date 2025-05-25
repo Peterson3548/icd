@@ -2,7 +2,10 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
+
   runtimeConfig: {
     githubToken: process.env.GITHUB_TOKEN
-  }
+  },
+
+  modules: ['@nuxt/eslint'],
 })
