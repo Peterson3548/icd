@@ -1,16 +1,26 @@
 import { InferenceClient } from "@huggingface/inference";
+import { z } from "zod/v4";
 
 export default defineEventHandler(async (event) => {
-    const token = useRuntimeConfig(event).HFToken;
-    const client = new InferenceClient(token);
     const body = await readBody(event)
 
-    if (!body.input) {
-        throw createError({
-            statusCode: 422,
-            statusMessage: 'Please insert input',
-        })
+    const validator = z.object({
+        input: z.string().max(300).min(2),
+    });
+
+    try {
+        validator.parse({ input: body.input })
+    } catch (err) {
+        if (err instanceof z.ZodError) {
+            throw createError({
+                statusCode: 422,
+                statusMessages: z.prettifyError(err),
+            })
+        }
     }
+
+    const token = useRuntimeConfig(event).HFToken;
+    const client = new InferenceClient(token);
 
     const response = await client.chatCompletion({
         model: "meta-llama/Llama-3.1-8B-Instruct",
