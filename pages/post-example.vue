@@ -5,14 +5,12 @@
         v-model="modelIndex"
         :disabled="status === 'pending'"
       >
-        <option :value="0">
-          openai/gpt-4.1
-        </option>
-        <option :value="1">
-          openai/gpt-4.1-mini
-        </option>
-        <option :value="2">
-          openai/gpt-4.1-nano
+        <option
+          v-for="(name, index) in models"
+          :key="index"
+          :value="index"
+        >
+          {{ name }}
         </option>
       </select>
     </div>
@@ -45,7 +43,8 @@
 </template>
 
 <script setup>
-const modelIndex = 0
+const models = useModels()
+const modelIndex = ref(0)
 const input = ref('若我發燒、喉嚨痛、流鼻水，請問我最有可能的icd診斷代碼是甚麼')
 
 const { status, data, refresh } = useFetch('/api/get-icd', {

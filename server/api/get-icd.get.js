@@ -1,5 +1,6 @@
 import ModelClient, { isUnexpected } from "@azure-rest/ai-inference";
 import { AzureKeyCredential } from "@azure/core-auth";
+import useModels from "~/composables/useModels";
 
 export default defineEventHandler(async (event) => {
     const token = useRuntimeConfig(event).githubToken;
@@ -12,11 +13,7 @@ export default defineEventHandler(async (event) => {
         modelIndex = query.modelIndex
     }
 
-    const models = [
-        "openai/gpt-4.1",
-        'openai/gpt-4.1-mini',
-        'openai/gpt-4.1-nano'
-    ]
+    const models = useModels()
 
     const model = models[modelIndex];
 
