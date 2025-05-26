@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
     const client = new InferenceClient(token);
 
     const response = await client.chatCompletion({
-        model: "meta-llama/Llama-3.1-8B-Instruct",
+        model: "CohereLabs/aya-expanse-8b",
         messages: [
             {
                 role: "user",
